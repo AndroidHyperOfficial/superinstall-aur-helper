@@ -60,6 +60,7 @@ Once the prerequisites are installed, clone the repository and run the self-inst
 ```bash
 git clone https://github.com/AndroidHyperOfficial/superinstall-aur-helper.git
 cd superinstall-aur-helper
+cd superinstall
 go run main.go --install-self
 ```
 ## OS-Specific Notes
