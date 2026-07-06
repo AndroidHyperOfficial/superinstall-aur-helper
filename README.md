@@ -23,7 +23,6 @@ First, ensure you have **Go** and **Git** and **7zip** installed on your system 
 ```bash
 sudo pacman -S git go 7zip
 ```
-(no need to install external apps like 7zip or winrar in windows)
 ### Setup
 Once the prerequisites are installed, clone the repository and run the self-installer:
 ```bash
