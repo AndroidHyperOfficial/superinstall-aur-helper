@@ -10,12 +10,7 @@ A security-focused CLI package manager alternative to paru and yay for Arch Linu
 `superinstall` is designed primarily for Arch Linux, where it functions as a native AUR helper. Its behavior changes depending on the operating system:
 
 * **Arch Linux**: Acts as a full-featured AUR helper with parallel dependency resolution and PGP self-healing.
-* **Other Platforms (Windows, macOS, BSD, Linux Distros)**: Functions as a unified wrapper. It detects your native package manager (like `winget`, `brew`, or `apt`) and routes commands through it to provide a consistent CLI experience.
 
-### Known Limitations
-* **Wrapper Fragility**: On non-Arch platforms, the tool relies on your system's native package manager. If the native tool's command syntax changes, `superinstall` may require an update to maintain compatibility.
-* **Path Management**: The tool assumes standard environment paths (e.g., `/usr/local/bin` or system defaults). Custom installation setups may require manual path configuration.
-* **Arch-Specific Logic**: Features like the "Security Gatekeeper" and "PGP Self-Healing" are optimized for Arch-based workflows and may have limited functionality on other operating systems.
 ## Arch Linux: Known Risks & Limitations
 While `superinstall` provides a streamlined interface for Arch, users should be aware of these architectural trade-offs:
 
@@ -25,35 +20,8 @@ While `superinstall` provides a streamlined interface for Arch, users should be 
 * **Manual "Heavy Lifting" Backup**: It is highly recommended to keep `pacman` or `paru` installed for mission-critical system updates, as this tool is primarily optimized for daily utility and application management.
 ## Installation
 First, ensure you have **Go** and **Git** and **7zip** installed on your system using your native package manager:
-
-**Arch Linux**
 ```bash
 sudo pacman -S git go 7zip
-```
-**Fedora and Red Hat**
-```bash
-sudo dnf install goland git 7zip
-```
-**Linux Gentoo (GO TOUCH GRASS NO JUST KIDDING)**
-```bash
-sudo emerge dev-lang/go dev-vcs/git app-arch/7zip
-```
-**MacOS**
-```bash
-brew install git go 7zip
-```
-**Debian and Ubuntu and Mint and other debian-based distros**
-```bash
-sudo apt install golang git p7zip-full
-```
-**FreeBSD**
-```bash
-pkg install sudo (i like sudo lol)
-sudo pkg install go git 7-zip
-```
-**Windows (i hate microslop)**
-```bash
-winget install GoLang.Go Git.Git
 ```
 (no need to install external apps like 7zip or winrar in windows)
 ### Setup
@@ -66,7 +34,4 @@ cd superinstall
 export GO111MODULE=on
 go run main.go --install-self
 ```
-## OS-Specific Notes
-### Windows: After running --install-self, you may need to restart your terminal or open a new session for the binary path to be recognized in your environment variables.
-### Gentoo & BSD: Ensure your user has write permissions to the destination directory for the binary (typically /usr/local/bin).
-### macOS/Linux: The tool automatically attempts to place the binary in your system path; if you receive a "Permission Denied" error, try running go run main.go --install-self with sudo.
+### Linux: The tool automatically attempts to place the binary in your system path; if you receive a "Permission Denied" error, try running go run main.go --install-self with sudo.
