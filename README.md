@@ -24,43 +24,45 @@ While `superinstall` provides a streamlined interface for Arch, users should be 
 * **Security "Trust" Paradox**: The PGP Self-Healing feature automates trust decisions; users should remain vigilant and verify PGP identities when prompted, rather than relying solely on automation.
 * **Manual "Heavy Lifting" Backup**: It is highly recommended to keep `pacman` or `paru` installed for mission-critical system updates, as this tool is primarily optimized for daily utility and application management.
 ## Installation
-First, ensure you have **Go** and **Git** installed on your system using your native package manager:
+First, ensure you have **Go** and **Git** and **7zip** installed on your system using your native package manager:
 
 **Arch Linux**
 ```bash
-sudo pacman -S git go
+sudo pacman -S git go 7zip
 ```
 **Fedora and Red Hat**
 ```bash
-sudo dnf install goland git
+sudo dnf install goland git 7zip
 ```
 **Linux Gentoo (GO TOUCH GRASS NO JUST KIDDING)**
 ```bash
-sudo emerge dev-lang/go dev-vcs/git
+sudo emerge dev-lang/go dev-vcs/git app-arch/7zip
 ```
 **MacOS**
 ```bash
-brew install git go
+brew install git go 7zip
 ```
 **Debian and Ubuntu and Mint and other debian-based distros**
 ```bash
-sudo apt install golang git
+sudo apt install golang git p7zip-full
 ```
 **FreeBSD**
 ```bash
 pkg install sudo (i like sudo lol)
-sudo pkg install go git
+sudo pkg install go git 7-zip
 ```
 **Windows (i hate microslop)**
 ```bash
 winget install GoLang.Go Git.Git
 ```
+(no need to install external apps like 7zip or winrar in windows)
 ### Setup
 Once the prerequisites are installed, clone the repository and run the self-installer:
 ```bash
 git clone https://github.com/AndroidHyperOfficial/superinstall-aur-helper.git
 cd superinstall-aur-helper
-cd superinstall
+unzip superinstall.zip
+export GO111MODULE=on
 go run main.go --install-self
 ```
 ## OS-Specific Notes
