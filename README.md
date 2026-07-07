@@ -10,16 +10,15 @@ A security-focused CLI package manager alternative to paru and yay for Arch Linu
 * **Security "Trust" Paradox**: The PGP Self-Healing feature automates trust decisions; users should remain vigilant and verify PGP identities when prompted, rather than relying solely on automation.
 * **Manual "Heavy Lifting" Backup**: It is highly recommended to keep `pacman` or `paru` installed for mission-critical system updates, as this tool is primarily optimized for daily utility and application management.
 ## Installation
-First, ensure you have **Go** and **Git** and **7zip** installed on your system using your native package manager:
+First, ensure you have **Go** and **Git** and installed on your system using your native package manager:
 ```bash
-sudo pacman -S git go 7zip
+sudo pacman -S git go 
 ```
 ### Setup
 Once the prerequisites are installed, clone the repository and run the self-installer:
 ```bash
 git clone https://github.com/AndroidHyperOfficial/superinstall-aur-helper.git
 cd superinstall-aur-helper
-unzip superinstall1.zip
 cd superinstall
 export GO111MODULE=on
 go run main.go --install-self
