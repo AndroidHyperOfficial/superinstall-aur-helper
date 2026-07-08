@@ -1,6 +1,6 @@
 # Maintainer: ximi <iuseopensusebtw@gmail.com>
 pkgname=superinstall
-pkgver=0.8
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Arch Linux CLI Package Deployment Subsystem and AUR Helper"
 arch=('x86_64' 'aarch64')
