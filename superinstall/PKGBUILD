@@ -1,0 +1,35 @@
+# Maintainer: ximi <iuseopensusebtw@gmail.com>
+pkgname=superinstall
+pkgver=0.8
+pkgrel=1
+pkgdesc="Arch Linux CLI Package Deployment Subsystem and AUR Helper"
+arch=('x86_64' 'aarch64')
+url="https://github.com/AndroidHyperOfficial/superinstall"
+license=('GPL3')
+depends=('pacman' 'git' 'gnupg')
+makedepends=('go')
+
+# Empty because we copy the files manually below
+source=()
+sha256sums=()
+
+build() {
+  # Copy your local dev code straight into the working build directory
+  mkdir -p "${srcdir}/src"
+  cp -r /home/ximi/superinstall/. "${srcdir}/src/"
+
+  cd "${srcdir}/src"
+  export GOPATH="${srcdir}/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  
+  go build -o "${pkgname}" .
+}
+
+package() {
+  cd "${srcdir}/src"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
