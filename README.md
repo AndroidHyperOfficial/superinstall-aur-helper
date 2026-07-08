@@ -20,7 +20,6 @@ Once the prerequisites are installed, clone the repository and run the self-inst
 git clone https://github.com/AndroidHyperOfficial/superinstall-aur-helper.git
 cd superinstall-aur-helper
 cd superinstall
-export GO111MODULE=on
 go run main.go --install-self
 ```
 ### Linux: The tool automatically attempts to place the binary in your system path; if you receive a "Permission Denied" error, try running go run main.go --install-self with sudo.
