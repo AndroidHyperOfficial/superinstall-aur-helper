@@ -10,9 +10,9 @@ A security-focused CLI package manager alternative to paru and yay for Arch Linu
 * **Security "Trust" Paradox**: The PGP Self-Healing feature automates trust decisions; users should remain vigilant and verify PGP identities when prompted, rather than relying solely on automation.
 * **Manual "Heavy Lifting" Backup**: It is highly recommended to keep `pacman` or `paru` installed for mission-critical system updates, as this tool is primarily optimized for daily utility and application management.
 ## Installation
-First, ensure you have **Go** and **Git** and installed on your system using your native package manager:
+First, ensure you have **Go** and **Git** and **Base-devel** installed on your system using your native package manager:
 ```bash
-sudo pacman -S git go 
+sudo pacman -S git go base-devel
 ```
 ### Setup
 Once the prerequisites are installed, clone the repository and run the self-installer:
