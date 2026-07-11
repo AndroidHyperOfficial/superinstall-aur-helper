@@ -5,7 +5,7 @@ A security-focused CLI package manager alternative to paru and yay for Arch Linu
 * **Security Auditor**: Built-in heuristic scanner that inspects build scripts for malicious patterns before execution.
 * **PGP Self-Healing**: Automatically fetches developer keys and verifies identities to prevent build failures.
 ## Known Risks & Limitations
-* **Dependency Conflict Risks**: Unlike `pacman` or `paru`, this tool's parallel resolver focuses on speed and does not perform deep validation of complex `provides`/`conflicts` tags, which may lead to dependency issues in complex AUR packages.
+* **Dependency Tracking**: While superinstall now integrates native .SRCINFO parsing to automatically verify architecture and dependency maps, complex or nested virtual package loops (provides/conflicts) are handled cleanly but lightweights compared to core native pacman tracking engines
 * **Maintenance Overhead**: As a custom-built helper, users are responsible for ensuring the tool stays compatible with upstream Arch Linux API changes or `pacman` metadata updates.
 * **Security "Trust" Paradox**: The PGP Self-Healing feature automates trust decisions; users should remain vigilant and verify PGP identities when prompted, rather than relying solely on automation.
 * **Manual "Heavy Lifting" Backup**: It is highly recommended to keep `pacman` or `paru` installed for mission-critical system updates, as this tool is primarily optimized for daily utility and application management.
