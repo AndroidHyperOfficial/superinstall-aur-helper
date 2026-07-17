@@ -1,25 +1,34 @@
-# superinstall-aur-helper
-A security-focused CLI package manager alternative to paru and yay for Arch Linux users.
-## FEATURES
-* **Unified Management**: Seamlessly handles system repositories and the AUR in one interface.
-* **Security Auditor**: Built-in heuristic scanner that inspects build scripts for malicious patterns before execution.
-* **PGP Self-Healing**: Automatically fetches developer keys and verifies identities to prevent build failures.
-## Known Risks & Limitations
-* **Dependency Tracking**: While superinstall now integrates native .SRCINFO parsing to automatically verify architecture and dependency maps, complex or nested virtual package loops (provides/conflicts) are handled cleanly but lightweights compared to core native pacman tracking engines
-* **Maintenance Overhead**: As a custom-built helper, users are responsible for ensuring the tool stays compatible with upstream Arch Linux API changes or `pacman` metadata updates.
-* **Security "Trust" Paradox**: The PGP Self-Healing feature automates trust decisions; users should remain vigilant and verify PGP identities when prompted, rather than relying solely on automation.
-* **Manual "Heavy Lifting" Backup**: It is highly recommended to keep `pacman` or `paru` installed for mission-critical system updates, as this tool is primarily optimized for daily utility and application management.
-## Installation
-First, ensure you have **Go** and **Git** and **Base-devel** installed on your system using your native package manager:
-```bash
-sudo pacman -S git go base-devel
-```
-### Setup
-Once the prerequisites are installed, clone the repository and run the self-installer:
+# superinstall (v1.8 C & Raylib Port)
+
+This is a lightweight, security-focused package manager helper designed for Arch Linux. Originally written in Go, this version is a complete rewrite in native C. It uses Raylib for basic hardware-accelerated GUI layouts, resulting in an exceptionally small footprint of only ~26 KB.
+
+---
+
+## Build and Setup
+
+To compile and install the application locally, you will need gcc, raylib, and the X11 development headers installed on your system. 
+
+Follow these steps to clone, navigate the directories, compile the binary directly to your user's local path, and run it globally.
+
+### Clone the Repo
 ```bash
 git clone https://github.com/AndroidHyperOfficial/superinstall-aur-helper.git
-cd superinstall-aur-helper
-cd superinstall
-go run main.go --install-self
 ```
-### Linux: The tool automatically attempts to place the binary in your system path; if you receive a "Permission Denied" error, try running go run main.go --install-self with sudo.
+### Navigate to Source Path
+```bash
+cd superinstall-aur-helper
+cd csuperinstall
+```
+### Compile
+```bash
+gcc main.c \
+    backends/backends.c \
+    backends/pacman.c \
+    providers/providers.c \
+    providers/aur.c \
+    -o ~/.local/bin/superinstall \
+    -O3 \
+    -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+  ```
+### Lanuch it NOW
+    superinstall
