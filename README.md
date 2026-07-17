@@ -1,6 +1,6 @@
 # superinstall (v1.8 C & Raylib Port)
 
-This is a lightweight, security-focused package manager helper designed for Arch Linux. Originally written in Go, this version is a complete rewrite in native C. It uses Raylib for basic hardware-accelerated GUI layouts, resulting in an exceptionally small footprint of only ~26 KB.
+This is a lightweight, security-focused package manager helper designed for Arch Linux. Originally written in Go, this version is a complete rewrite in native C. 
 
 ---
 
