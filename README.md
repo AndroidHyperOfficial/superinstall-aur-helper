@@ -6,8 +6,10 @@ This is a lightweight, security-focused package manager helper designed for Arch
 
 ## Build and Setup
 
-To compile and install the application locally, you will need gcc, raylib, and the X11 development headers installed on your system. 
-
+To compile and install the application locally, you will need gcc, raylib, and the X11 development headers installed on your system by typing this command:
+```bash
+sudo pacman -S git curl gnupg raylib libx11
+```
 Follow these steps to clone, navigate the directories, compile the binary directly to your user's local path, and run it globally.
 
 ### Clone the Repo
