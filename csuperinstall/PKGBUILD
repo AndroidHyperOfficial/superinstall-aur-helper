@@ -1,0 +1,21 @@
+# Maintainer: AndroidHyper <iuseopensusebtw@gmail.com>
+pkgname=superinstall-bin
+pkgver=1.8
+pkgrel=1
+pkgdesc="A security-focused package manager alternative to paru and yay (Pre-compiled C Binary)"
+arch=('x86_64')
+url="https://github.com/AndroidHyperOfficial/superinstall-aur-helper"
+license=('GPL-3.0')
+depends=('pacman' 'git' 'curl' 'gnupg' 'glibc' 'raylib' 'libx11')
+options=(!debug !strip)
+provides=('superinstall')
+conflicts=('superinstall')
+
+# Downloads your pre-compiled binary directly from your GitHub Release assets
+source=("https://github.com/AndroidHyperOfficial/superinstall-aur-helper/releases/download/v${pkgver}/superinstall")
+sha256sums=('SKIP') # You can replace 'SKIP' with the actual sha256sum of your binary for security
+
+package() {
+    # Simply copy the pre-compiled binary straight to the user's /usr/bin folder!
+    install -Dm755 "${srcdir}/superinstall" "${pkgdir}/usr/bin/superinstall"
+}
