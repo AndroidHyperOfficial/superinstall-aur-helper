@@ -1,0 +1,40 @@
+# Maintainer: AndroidHyper <iuseopensusebtw@gmail.com>
+pkgname=superinstall
+pkgver=1.8
+pkgrel=1
+pkgdesc="A security-focused package manager alternative to paru and yay (C & Raylib Port)"
+arch=('x86_64' 'aarch64' 'i686')
+url="https://github.com/AndroidHyperOfficial/superinstall-aur-helper"
+license=('GPL-3.0')
+depends=('pacman' 'git' 'curl' 'gnupg' 'glibc' 'raylib' 'libx11')
+makedepends=('gcc')
+provides=('superinstall')
+conflicts=('superinstall-bin')
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AndroidHyperOfficial/superinstall-aur-helper/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "superinstall-aur-helper-${pkgver}"
+    mkdir -p build
+}
+
+build() {
+    cd "superinstall-aur-helper-${pkgver}"
+    
+    # Compile the modular C project into a highly optimized binary
+    gcc main.c \
+        backends/backends.c \
+        backends/pacman.c \
+        providers/providers.c \
+        providers/aur.c \
+        -o build/superinstall \
+        -O3 \
+        -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+}
+
+package() {
+    cd "superinstall-aur-helper-${pkgver}"
+    # Install the compiled binary directly to /usr/bin/ so it's in the system PATH
+    install -Dm755 build/superinstall "${pkgdir}/usr/bin/superinstall"
+}
